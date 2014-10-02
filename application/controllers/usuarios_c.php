@@ -3,8 +3,6 @@
 class Usuarios_c extends CI_Controller {
 
 	public function novo () {
-		$this->output->enable_profiler(TRUE);
-
 		$this->load->helper('url');
 		$this->load->model('usuarios_m');
 

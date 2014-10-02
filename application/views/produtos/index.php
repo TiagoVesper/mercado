@@ -6,6 +6,10 @@
 <body>
 
 	<div class="container">
+
+		<p class="alert-success"><?= $this->session->flashdata('success')?></p>
+		<p class="alert-danger"><?= $this->session->flashdata('danger')?></p>
+
 		<h1>Produtos</h1>
 		<table class="table">
 			<tr>
@@ -22,64 +26,71 @@
 		<?php endforeach ?>
 		</table>
 
-		<?php if($this->session->userdata('usuario_logado')) : ?>
-		<h1>Login</h1>
-		<?php
-		echo form_open('login_c/autenticar');
-		echo form_label('Email', 'email');
-		echo form_input(array(
-			'name' => 'email',
-			'id' => 'email',
-			'class' => 'form-control',
-			'maxlebgth'=> '255'
-		));
-		echo form_label('Senha', 'senha');
-		echo form_password(array(
-			'name' => 'senha',
-			'id' => 'senha',
-			'class' => 'form-control',
-			'maxlebgth'=> '255'
-		));
-		echo form_button(array(
-			'class' => 'btn btn-primary',
-			'content' => 'Logar',
-			'type' => 'submit'
-		));
-		echo form_close();
+		<?php if($this->session->userdata('usuario_logado')) {
+				echo anchor('login_c/logout', 'logout', array(
+					   'class' => 'btn btn-primary'));
+		} else { ?>
+			<h1>Login</h1>
+			<?php
+			echo form_open('login_c/autenticar');
+			echo form_label('Email', 'email');
+			echo form_input(array(
+				'name' => 'email',
+				'id' => 'email',
+				'class' => 'form-control',
+				'maxlebgth'=> '255'
 
-		?>
-		<h1>Cadastro</h1>
-		<?php
-		echo form_open('usuarios_c/novo');
-		echo form_label('Nome', 'nome');
-		echo form_input(array(
-			'name' => 'nome',
-			'id' => 'nome',
-			'class' => 'form-control',
-			'maxlebgth'=> '255'
-		));
-		echo form_label('Email', 'email');
-		echo form_input(array(
-			'name' => 'email',
-			'id' => 'email',
-			'class' => 'form-control',
-			'maxlebgth'=> '255'
-		));
-		echo form_label('Senha', 'senha');
-		echo form_password(array(
-			'name' => 'senha',
-			'id' => 'senha',
-			'class' => 'form-control',
-			'maxlebgth'=> '255'
-		));
-		echo form_button(array(
-			'class' => 'btn btn-primary',
-			'content' => 'Cadastrar',
-			'type' => 'submit'
-		));
-		echo form_close();
-		endif
-		?>
+			));
+			echo form_label('Senha', 'senha');
+			echo form_password(array(
+				'name' => 'senha',
+				'id' => 'senha',
+				'class' => 'form-control',
+				'maxlebgth'=> '255'
+
+			));
+			echo form_button(array(
+				'class' => 'btn btn-primary',
+				'content' => 'Logar',
+				'type' => 'submit'
+			));
+			echo form_close();
+
+			?>
+			<h1>Cadastro</h1>
+			<?php
+			echo form_open('usuarios_c/novo');
+			echo form_label('Nome', 'nome');
+			echo form_input(array(
+				'name' => 'nome',
+				'id' => 'nome',
+				'class' => 'form-control',
+				'maxlebgth'=> '255'
+
+			));
+			echo form_label('Email', 'email');
+			echo form_input(array(
+				'name' => 'email',
+				'id' => 'email',
+				'class' => 'form-control',
+				'maxlebgth'=> '255'
+
+			));
+			echo form_label('Senha', 'senha');
+			echo form_password(array(
+				'name' => 'senha',
+				'id' => 'senha',
+				'class' => 'form-control',
+				'maxlebgth'=> '255'
+
+			));
+			echo form_button(array(
+				'class' => 'btn btn-primary',
+				'content' => 'Cadastrar',
+				'type' => 'submit'
+			));
+			echo form_close();
+		} ?>
 	</div>
 
 </body>
